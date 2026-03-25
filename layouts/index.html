@@ -1,0 +1,102 @@
+{{ define "main" }}
+    <main aria-role="main">
+        <div class="container">
+        <header class="my-5">
+            <h1>{{.Title}}</h1>
+            {{ with .Params.subtitle }}
+                <span class="subtitle">{{.}}</span>
+            {{ end }}
+        </header>
+        <div class="homepage-content">
+            
+            {{.Content}}
+            
+            <section class="my-5">
+                <div class="cards">
+                {{ range .Site.Data.plans }}
+                    
+                        <div class="card mx-1 mb-3">
+                            <div class="ratio ratio-16x9">
+                                <iframe src="{{.image}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                        <h5>{{.name}}</h5>
+                                    </div>
+                                    <span>${{.price}}</span>
+                                </div>
+                                <p>{{.description | truncate 150}} <a href="#" data-bs-toggle="modal" data-bs-target="#a{{.plan_id}}">read more</a> </p>
+
+                                <p>
+                                    <span class="badge bg-secondary">{{.modality}}</span>
+                                    {{ if  eq .level "Beginner"}}
+                                    <span class="badge bg-success">
+                                    {{end}}
+                                    {{ if  eq .level "Intermediate"}}
+                                    <span class="badge bg-primary">
+                                    {{end}}
+                                    {{ if  eq .level "Competitive"}}
+                                    <span class="badge bg-dark">
+                                    {{end}}
+                                    
+                                    
+                                        {{.level}}
+                                    </span>
+                                    <span class="badge bg-light text-dark">{{.duration}}</span>
+                                    <span class="badge bg-light text-dark">{{.hrs_week}}</span>
+                                    <span class="badge bg-light text-dark">{{.wks_week}}</span>
+                                </p>
+
+                                <button class="btn btn-primary snipcart-add-item"
+                                    data-item-id="{{.plan_id}}"
+                                    data-item-price="{{.price}}"
+                                    data-item-url="/"
+                                    data-item-description="{{.description}}"
+                                    data-item-image=""
+                                    data-item-name="{{.name}}">
+                                    Buy now
+                                </button>
+                            </div>
+
+                        </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="a{{.plan_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{.name}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                    {{.description | markdownify}}
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary snipcart-add-item"
+                                    data-bs-dismiss="modal"
+                                    data-item-id="{{.plan_id}}"
+                                    data-item-price="{{.price}}"
+                                    data-item-url="/"
+                                    data-item-description="{{.description}}"
+                                    data-item-image=""
+                                    data-item-name="{{.name}}">
+                                    Buy now
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                {{end}}
+                </div>
+        </section>
+        </div>
+        <!-- <div>
+            {{ range first 10 .Site.RegularPages }}
+                {{ .Render "summary"}}
+            {{ end }}
+        </div> -->
+    </div>
+    </main>
+{{ end }}

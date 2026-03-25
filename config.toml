@@ -1,0 +1,6 @@
+baseURL = 'http://example.com'
+languageCode = 'en-us'
+title = 'Dylan Johnson Training'
+theme = 'todaysplan'
+[params]
+    logo = 'dj_logo.jpeg'
