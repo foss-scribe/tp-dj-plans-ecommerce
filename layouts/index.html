@@ -48,13 +48,7 @@
                                     <span class="badge bg-light text-dark">{{.wks_week}}</span>
                                 </p>
 
-                                <button class="btn btn-primary snipcart-add-item"
-                                    data-item-id="{{.plan_id}}"
-                                    data-item-price="{{.price}}"
-                                    data-item-url="/"
-                                    data-item-description="{{.description}}"
-                                    data-item-image=""
-                                    data-item-name="{{.name}}">
+                                <button class="btn btn-primary snipcart-add-item" disabled>
                                     Buy now
                                 </button>
                             </div>
@@ -74,16 +68,8 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary snipcart-add-item"
-                                    data-bs-dismiss="modal"
-                                    data-item-id="{{.plan_id}}"
-                                    data-item-price="{{.price}}"
-                                    data-item-url="/"
-                                    data-item-description="{{.description}}"
-                                    data-item-image=""
-                                    data-item-name="{{.name}}">
+                            <button class="btn btn-primary snipcart-add-item" disabled>
                                     Buy now
-                                    disabled
                                 </button>
                             </div>
                         </div>
